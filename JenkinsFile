@@ -22,9 +22,6 @@ pipeline {
                         sh """ssh -t -t ec2-user@ip-172-31-29-65 -o StrictHostKeyChecking=no << EOF
                         #!/bin/bash -xe
                         echo Connected to HelloWorld-App
-                        echo Cloning Hello-World Application
-                        git clone https://github.com/tiagobmarques/jenkins.git
-                        cd jenkins/hello-world
                         exit
                         EOF"""
                     }
