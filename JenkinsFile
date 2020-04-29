@@ -10,7 +10,7 @@ pipeline {
 
         stage("Build") {
             steps {
-                sh "cd hello-world"
+                sh "cd hello-world && ./gradlew build"
             }
         }
 
