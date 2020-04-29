@@ -14,6 +14,16 @@ pipeline {
             }
         }
 
+        stage("Docker Run") {
+                steps {
+                  script {
+                     sshagent(credentials : ['ec2-poc.pem']) {
+                        sh "echo Connecting to the remote server"
+                    }
+                 }
+                  }
+              }
+
        }
 	post {
 		always {
