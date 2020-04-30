@@ -23,6 +23,9 @@ pipeline {
                         #!/bin/bash -xe
                         echo Connected to HelloWorld-App
                         git clone https://github.com/tiagobmarques/jenkins.git
+                        cd jenkins/hello-world
+                        chmod +x gradlew
+                        ./gradlew build run
                         exit
                         EOF"""
                     }
