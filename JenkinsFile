@@ -22,10 +22,9 @@ pipeline {
                         sh """ssh -t -t ec2-user@ec2-34-230-77-49.compute-1.amazonaws.com -o StrictHostKeyChecking=no << EOF
                         #!/bin/bash -xe
                         echo Connected to HelloWorld-App
-                        git clone https://github.com/tiagobmarques/jenkins.git
-                        cd jenkins/hello-world
-                        chmod +x gradlew
-                        ./gradlew build run
+                        sudo curl -L https://poc-escrita-tiago.s3.amazonaws.com/deploy-single-container.sh -o deploy-single-container.sh
+                        sudo chmod +x deploy-single-container.sh
+                        sudo ./deploy-single-container.sh
                         exit
                         EOF"""
                     }
