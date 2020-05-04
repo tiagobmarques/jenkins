@@ -19,7 +19,7 @@ pipeline {
                   script {
                      sshagent(credentials : ['ec2-poc.pem']) {
                         sh "echo Connecting to the remote server"
-                        sh """ssh -t -t ec2-user@ip-172-31-29-65 -o StrictHostKeyChecking=no << EOF
+                        sh """ssh -t -t ec2-user@ip-34.230.77.49 -o StrictHostKeyChecking=no << EOF
                         #!/bin/bash -xe
                         echo Connected to HelloWorld-App
                         git clone https://github.com/tiagobmarques/jenkins.git
