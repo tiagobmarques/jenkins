@@ -19,7 +19,7 @@ pipeline {
                   script {
                      sshagent(credentials : ['ec2-poc.pem']) {
                         sh "echo Connecting to the remote server"
-                        sh """ssh -t -t ec2-user@ec2-54-234-85-226.compute-1.amazonaws.com -o StrictHostKeyChecking=no << EOF
+                        sh """ssh -t -t ec2-user@ec2-3-87-98-213.compute-1.amazonaws.com -o StrictHostKeyChecking=no << EOF
                         #!/bin/bash -xe
                         echo Connected to HelloWorld-App
                         sudo curl -L https://poc-escrita-tiago.s3.amazonaws.com/deploy-single-container.sh -o deploy-single-container.sh
