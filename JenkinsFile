@@ -22,11 +22,7 @@ pipeline {
                         sh '''ssh -t -t ubuntu@ec2-54-242-166-19.compute-1.amazonaws.com -o StrictHostKeyChecking=no << EOF
                         #!/bin/bash
                         echo Connected to HelloWorld-App
-                        git clone https://github.com/tiagobmarques/jenkins.git
-                        cd jenkins/hello-world
-                        chmod +x gradlew
-                        ./gradlew clean --foreground
-                        ./gradlew build --foreground
+                        sudo docker run -d -p 8080:9090 tiagobm564/devops-jenkins:latest
                         exit
                         EOF'''
                     }
