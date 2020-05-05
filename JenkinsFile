@@ -29,6 +29,7 @@ pipeline {
                         sudo docker images prune
                         sudo docker build -f Dockerfile -t tiagobm564/devops-jenkins .
                         sudo docker run -d -p 8080:9090 tiagobm564/devops-jenkins:latest
+                        echo Hello-World Application Runnig!!!
                         exit
                         EOF'''
                     }
