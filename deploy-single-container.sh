@@ -1,4 +1,4 @@
-git clone https://github.com/tiagobmarques/jenkins.git
-cd jenkins/hello-world
-chmod +x gradlew
-./gradlew build run
+sudo docker stop -t 0 $(sudo docker ps -q)
+sudo docker container prune --force
+sudo docker rmi tiagobm564/devops-jenkins
+                        
