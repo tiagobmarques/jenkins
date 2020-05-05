@@ -25,7 +25,7 @@ pipeline {
                         git clone https://github.com/tiagobmarques/jenkins.git
                         cd jenkins/hello-world
                         chmod +x gradlew
-                        ./gradlew build run
+                        ./gradlew build
                         cd ..
                         sudo docker build -f Dockerfile -t tiagobm564/devops-jenkins .
                         sudo docker run -d -p 8080:9090 tiagobm564/devops-jenkins:latest
