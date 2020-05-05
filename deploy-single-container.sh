@@ -1,4 +1,5 @@
-echo Stopping container
-sudo docker container prune
-echo Removing image
-sudo docker images prune
+#!/bin/bash
+
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+docker image rm -f $(docker images -a -q)
