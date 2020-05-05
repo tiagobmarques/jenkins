@@ -22,6 +22,12 @@ pipeline {
                         sh '''ssh -t -t ubuntu@ec2-54-242-166-19.compute-1.amazonaws.com -o StrictHostKeyChecking=no << EOF
                         #!/bin/bash
                         echo Connected to HelloWorld-App
+                        echo Stopping container
+                        sudo docker stop -t 0 \\$(sudo docker ps -q)
+                        sudo docker container prune --force
+                        echo Removing image
+                        sudo docker images prune
+                        sudo docker build -f Dockerfile -t tiagobm564/devops-jenkins .
                         sudo docker run -d -p 8080:9090 tiagobm564/devops-jenkins:latest
                         exit
                         EOF'''
