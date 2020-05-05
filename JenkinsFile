@@ -28,7 +28,7 @@ pipeline {
                         ./gradlew build
                         cd ..
                         echo Stopping container
-                        sudo docker container prune
+                        sudo docker container prune --force
                         echo Removing image
                         sudo docker images prune
                         sudo docker build -f Dockerfile -t tiagobm564/devops-jenkins .
