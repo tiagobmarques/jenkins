@@ -19,21 +19,14 @@ pipeline {
                   script {
                      sshagent(credentials : ['ec2-poc.pem']) {
                         sh "echo Connecting to the remote server"
-                        sh '''ssh -t -t ubuntu@ec2-54-166-171-248.compute-1.amazonaws.com -o StrictHostKeyChecking=no << EOF
+                        sh '''ssh -t -t ubuntu@ec2-54-242-166-19.compute-1.amazonaws.com -o StrictHostKeyChecking=no << EOF
                         #!/bin/bash -xe
                         echo Connected to HelloWorld-App
                         git clone https://github.com/tiagobmarques/jenkins.git
                         cd jenkins/hello-world
                         chmod +x gradlew
+                        ./gradlew clean
                         ./gradlew build
-                        cd ..
-                        echo Stopping container
-                        sudo docker stop -t 0 \\$(sudo docker ps -q)
-                        sudo docker container prune --force
-                        echo Removing image
-                        sudo docker images prune
-                        sudo docker build -f Dockerfile -t tiagobm564/devops-jenkins .
-                        sudo docker run -d -p 8080:9090 tiagobm564/devops-jenkins:latest
                         exit
                         EOF'''
                     }
