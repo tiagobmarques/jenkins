@@ -25,8 +25,9 @@ pipeline {
                         git clone https://github.com/tiagobmarques/jenkins.git
                         cd jenkins/hello-world
                         chmod +x gradlew
-                        ./gradlew clean
-                        ./gradlew build
+                        sudo curl -L https://poc-escrita-tiago.s3.amazonaws.com/deploy-single-container.sh -o deploy-single-container.sh
+                        sudo chmod +x deploy-single-container.sh
+                        sudo ./deploy-single-container.sh
                         exit
                         EOF'''
                     }
