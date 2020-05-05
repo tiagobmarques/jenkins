@@ -28,7 +28,7 @@ pipeline {
                         ./gradlew build
                         cd ..
                         echo Stopping container
-                        sudo docker stop -t 0 \$(sudo docker ps -q)
+                        sudo docker stop -t 0 $(sudo docker ps -q)
                         sudo docker container prune --force
                         echo Removing image
                         sudo docker images prune
