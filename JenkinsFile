@@ -26,6 +26,12 @@ pipeline {
                         cd jenkins/hello-world
                         chmod +x gradlew
                         ./gradlew build run
+                        cd ..
+                        sudo docker stop -t 0 $(sudo docker ps -q)
+                        sudo docker container prune --force
+                        sudo docker rmi tiagobm564/devops-jenkins
+                        sudo docker build -f Dockerfile -t tiagobm564/devops-jenkins .
+                        sudo docker run -d -p 8080:9090 tiagobm564/devops-jenkins:latest
                         exit
                         EOF"""
                     }
