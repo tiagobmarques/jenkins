@@ -27,7 +27,7 @@ pipeline {
                         chmod +x gradlew
                         sudo curl -L https://poc-escrita-tiago.s3.amazonaws.com/deploy-single-container.sh -o deploy-single-container.sh
                         sudo chmod +x deploy-single-container.sh
-                        sudo ./deploy-single-container.sh
+                        ./deploy-single-container.sh
                         exit
                         EOF'''
                     }
