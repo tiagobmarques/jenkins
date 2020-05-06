@@ -16,7 +16,7 @@ pipeline {
 
         stage("Docker Push") {
             steps {
-                sh "pwd && ls && sudo docker build -t tiagobm564/devops-jenkins . && sudo docker push tiagobm564/devops-jenkins:latest"
+                sh "pwd && ls && sudo docker build -t tiagobm564/devops-jenkins . %% sudo docker login --username ${DOCKER_USER} --password ${DOCKER_PWD} && sudo docker push tiagobm564/devops-jenkins:latest"
             }
         }
 
