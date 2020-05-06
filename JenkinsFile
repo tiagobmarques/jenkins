@@ -10,7 +10,10 @@ pipeline {
 
         stage("Build") {
             steps {
-                sh "cd hello-world && chmod +x gradlew && ./gradlew build"
+                sh "cd hello-world 
+                chmod +x gradlew 
+                ./gradlew build
+                cd .."
             }
         }
 
@@ -19,7 +22,7 @@ pipeline {
                   script {
                      sshagent(credentials : ['ec2-poc.pem']) {
                         sh "echo Connecting to the remote server"
-                        sh '''ssh -t -t ubuntu@ec2-54-242-166-19.compute-1.amazonaws.com -o StrictHostKeyChecking=no << EOF
+                        sh '''ssh -t -t ubuntu@ec2-54-87-59-82.compute-1.amazonaws.com -o StrictHostKeyChecking=no << EOF
                         #!/bin/bash
                         echo Connected to HelloWorld-App
                         echo Stopping container
@@ -27,7 +30,6 @@ pipeline {
                         sudo docker container prune --force
                         echo Removing image
                         sudo docker images prune
-                        sudo docker build -f Dockerfile -t tiagobm564/devops-jenkins .
                         sudo docker run -d -p 8080:9090 tiagobm564/devops-jenkins:latest
                         echo Hello-World Application Runnig!!!
                         exit
