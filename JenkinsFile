@@ -33,7 +33,7 @@ pipeline {
                         sudo docker container prune --force
                         echo Removing image
                         sudo docker rmi tiagobm564/devops-jenkins:latest
-                        sudo docker run -d -p 8080:9090 tiagobm564/devops-jenkins:latest
+                        sudo docker run -d -p 80:9090 tiagobm564/devops-jenkins:latest
                         echo Hello-World Application Runnig!!!
                         exit
                         EOF'''
