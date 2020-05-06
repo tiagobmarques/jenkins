@@ -24,7 +24,7 @@ pipeline {
                 steps {
                   script {
                      sshagent(credentials : ['ec2-poc.pem']) {
-                        sh "echo Connecting to the remote server"
+                        sh "echo Connecting to the remote server!"
                         sh '''ssh -t -t ubuntu@ec2-${REMOTE_HOST}.compute-1.amazonaws.com -o StrictHostKeyChecking=no << EOF
                         #!/bin/bash
                         echo Connected to HelloWorld-App
