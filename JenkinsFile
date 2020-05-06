@@ -26,7 +26,7 @@ pipeline {
                         sudo docker stop -t 0 \\$(sudo docker ps -q)
                         sudo docker container prune --force
                         echo Removing image
-                        sudo docker images prune
+                        sudo docker rmi tiagobm564/devops-jenkins:latest
                         sudo docker run -d -p 8080:9090 tiagobm564/devops-jenkins:latest
                         echo Hello-World Application Runnig!!!
                         exit
