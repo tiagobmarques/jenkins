@@ -10,7 +10,7 @@ pipeline {
 
         stage("Build") {
             steps {
-                sh "cd hello-world &&  chmod +x gradlew && ./gradlew build && cd .."
+                sh "cd hello-world &&  chmod +x gradlew && ./gradlew build && cd .. && sudo docker build -f Dockerfile -t tiagobm564/devops-jenkins . && sudo docker push"
             }
         }
 
